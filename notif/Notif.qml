@@ -14,31 +14,39 @@ Rectangle {
 	radius: 18
 
 	WrapperMouseArea {
+		id: notif_area
 		margin: 20;
 		Row {
 			spacing: 15
 			Image {
+				id: notif_icon
 				visible: source!=""
 				source: notif.modelData.image||notif.modelData.appIcon
-				width: 50
-				height: 50
+				width: 75
+				fillMode: Image.PreserveAspectFit
 			}
 			Column {
+				width: notif.width - 2*notif_area.margin - parent.spacing - notif_icon.width
 				Text {
 					color: "#ffffff"
 					font.bold: true
 					font.pixelSize: 16
 					text: notif.modelData.summary
+					wrapMode: Text.Wrap
+					width: parent.width
 				}
 				Text {
 					color: "#ffffff"
 					font.pixelSize: 13
 					text: notif.modelData.body
+					wrapMode: Text.Wrap
+					width: parent.width
 				}
 			}
 		}
 
 		onPressed: {
+			notif.modelData.actions[0].invoke()
 			notif.modelData.dismiss()
 		}
 	}
