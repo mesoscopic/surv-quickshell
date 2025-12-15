@@ -153,8 +153,20 @@ PanelWindow {
 			anchors.right: section_time.left
 			anchors.rightMargin: 20
 
+			property int selected: -1
+			property var selectedItem: tray_items.itemAt(selected)
+
+			IpcHandler {
+				target: "tray"
+				function cycle() {
+					section_tray.selected = (section_tray.selected + 1) % SystemTray.items.values.length
+					tray_items.itemAt(section_tray.selected).showMenu()
+				}
+			}
+
 			Row {
 				Repeater {
+					id: tray_items
 					model: SystemTray.items.values
 					TrayItem {}
 				}
