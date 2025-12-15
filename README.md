@@ -8,13 +8,15 @@ The configuration assumes the use of [Hyprland](https://hypr.land) and [Kitty](h
 ## Features
 - Hyprland workspace display
 - Volume, brightness, and battery display with dynamic icons
+    - Updating brightness is your responsibility to implement, use `qs ipc call brightness set <percent>`
+    - With [brillo](https://gitlab.com/cameronnemo/brillo), for example, use `qs ipc call brightness set $(brillo)` on start and whenever you update your brightness
 - Active window title
 - System tray
-    - considering adding keyboard interaction
+    - Use `qs ipc call menu cycle` to interact with menus from keyboard
 - Time display
 - Fuzzy .desktop launcher (triggered by `qs ipc call menu toggle`)
-    - considering adding more launcher features
+    - Considering adding more launcher features
 - **Very** simplistic notification display (click notifications to dismiss)
-    - considering adding keyboard interaction
+    - Considering adding keyboard interaction
 
 May consider including the currently-separate wallpaper layer if it ends up integrating with the rest of the shell.

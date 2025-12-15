@@ -64,7 +64,7 @@ PanelWindow {
 			IpcHandler {
 				target: "brightness"
 
-				function set(percent: int): void { section_meters.brightness = percent }
+				function set(percent: real): void { section_meters.brightness = Math.round(percent) }
 			}
 
 			Row {
