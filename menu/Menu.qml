@@ -24,7 +24,6 @@ PanelWindow {
 			root.menuOpen = false
 		}
 	}
-	mask: Region {item: menu}
 	Rectangle {
 		id: rect
 		implicitWidth: menu.width

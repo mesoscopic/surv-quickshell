@@ -5,7 +5,6 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 
-import "bg"
 import "panels"
 import "notif"
 import "menu"

@@ -124,7 +124,7 @@ PanelWindow {
 				color: "#ffffff"
 				font.bold: true
 				font.pixelSize: 15
-				text: Util.shorten(ToplevelManager.activeToplevel.title, 70)
+				text: visible ? Util.shorten(ToplevelManager.activeToplevel.title, 70) : ""
 				visible: ToplevelManager.activeToplevel !== null && ToplevelManager.activeToplevel.activated && !root.menuOpen
 			}
 		}
