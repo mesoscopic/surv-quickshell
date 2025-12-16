@@ -46,7 +46,6 @@ Rectangle {
 		}
 
 		onPressed: {
-			notif.modelData.actions[0].invoke()
 			notif.modelData.dismiss()
 		}
 	}
