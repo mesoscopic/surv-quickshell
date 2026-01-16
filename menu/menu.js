@@ -16,16 +16,10 @@ function act(search, item) {
 		case "=":
 			break;
 		default:
-			if (item.runInTerminal)
-				Quickshell.execDetached({
-					command: ["kitty", "--hold=no", "--", ...item.command],
-					workingDirectory: item.workingDirectory
-				});
-			else
-				Quickshell.execDetached({
-					command: item.command,
-					workingDirectory: item.workingDirectory
-				});
+			Quickshell.execDetached({
+				command: ["uwsm-app", ...(item.runInTerminal?["-T"]:[]), "--", ...item.command],
+				workingDirectory: item.workingDirectory
+			});
 			break;
 	}
 }
