@@ -17,7 +17,7 @@ function act(search, item) {
 			break;
 		default:
 			Quickshell.execDetached({
-				command: ["uwsm-app", ...(item.runInTerminal?["-T"]:[]), "--", ...item.command],
+				command: ["app2unit", ...(item.runInTerminal?["-T"]:[]), "--", ...item.command],
 				workingDirectory: item.workingDirectory
 			});
 			break;
