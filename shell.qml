@@ -3,11 +3,14 @@
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
+import Quickshell.Services.Pam
 import QtQuick
 
 import "panels"
 import "notif"
 import "menu"
+import "lock"
+import "wall"
 
 Scope {
 	id: root
@@ -19,7 +22,18 @@ Scope {
 			root.menuOpen = !root.menuOpen
 		}
 	}
+	IpcHandler {
+		target: "lock"
+		function lock() {
+			lock.pam.start()
+			lock.locked = true
+		}
+	}
 
+	Variants {
+		model: Quickshell.screens
+		Wallpaper {}
+	}
 	Variants {
 		model: Quickshell.screens
 		TopPanel {}
@@ -29,4 +43,10 @@ Scope {
 		Notifs {}
 	}
 	Menu {}
+
+	WlSessionLock {
+		id: lock
+		readonly property PamContext pam: PamContext {}
+		LockScreen {}
+	}
 }
