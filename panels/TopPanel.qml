@@ -134,11 +134,6 @@ PanelWindow {
 			id: section_time
 			anchors.right: inner.right
 
-			SystemClock {
-				id: clock
-				precision: SystemClock.Seconds
-			}
-
 			Text {
 				color: "#ffffff"
 				font.bold: true

@@ -30,6 +30,11 @@ Scope {
 		}
 	}
 
+	SystemClock {
+		id: clock
+		precision: SystemClock.Seconds
+	}
+
 	Variants {
 		model: Quickshell.screens
 		Wallpaper {}

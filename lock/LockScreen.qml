@@ -45,11 +45,37 @@ WlSessionLockSurface {
 		unlock_anim.start()
 		lock.pam.abort()
 	}
-	Background {
+	Rectangle {
 		id: content
+		color: "transparent"
+		anchors.fill: parent
 		opacity: 0
+		Background {
+			layer.enabled: true
+			layer.effect: MultiEffect {
+				autoPaddingEnabled: false
+				blurEnabled: true
+				blur: 1
+				blurMax: 16
+			}
+		}
 		Column {
+			spacing: 10
 			anchors.centerIn: parent
+			Rectangle {
+				color: "#90000000"
+				radius: 20
+				implicitWidth: 400
+				implicitHeight: 50
+				anchors.horizontalCenter: parent.horizontalCenter
+				Text {
+					color: "#ffffff"
+					text: Qt.formatDateTime(clock.date, "yyyy.MM.dd hh:mm:ss")
+					font.bold: true
+					font.pixelSize: 25
+					anchors.centerIn: parent
+				}
+			}
 			Input {}
 		}
 	}
