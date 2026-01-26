@@ -157,6 +157,10 @@ PanelWindow {
 					section_tray.selected = (section_tray.selected + 1) % SystemTray.items.values.length
 					tray_items.itemAt(section_tray.selected).showMenu()
 				}
+				function rcycle() {
+					section_tray.selected = (SystemTray.items.values.length + section_tray.selected - 1) % SystemTray.items.values.length
+					tray_items.itemAt(section_tray.selected).showMenu()
+				}
 			}
 
 			Row {

@@ -11,7 +11,7 @@ Rectangle {
 	clip: true
 
 	property bool submitted: false
-	property string entry: "ye"
+	property string entry: ""
 	readonly property bool showMessage: !lock.pam.responseRequired || entry.length == 0
 	readonly property var col: showMessage?(lock.pam.messageIsError?"#f38ba8":"#aaaaaa"):(submitted?"#f9e2af":"#ffffff")
 
