@@ -19,5 +19,5 @@ and uses [app2unit](https://github.com/Vladimir-csp/app2unit) to launch applicat
     - Considering adding more launcher features
 - **Very** simplistic notification display (click notifications to dismiss)
     - Considering adding keyboard interaction
-
-May consider including the currently-separate wallpaper layer if it ends up integrating with the rest of the shell.
+- Wallpaper (replace wallpaper.png)
+- Very simple lock screen
