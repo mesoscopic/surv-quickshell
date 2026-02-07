@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 import Quickshell.Services.Pam
 import QtQuick
@@ -39,6 +40,12 @@ WlSessionLockSurface {
 			} else if (result == PamResult.Failed) {
 				lock.pam.start()
 			}
+		}
+	}
+	Connections {
+		target: lock
+		function onUnlock() {
+			unlock()
 		}
 	}
 	function unlock() {

@@ -22,19 +22,11 @@ Scope {
 			root.menuOpen = !root.menuOpen
 		}
 	}
-	IpcHandler {
-		target: "lock"
-		function lock() {
-			lock.pam.start()
-			lock.locked = true
-		}
-	}
 
 	SystemClock {
 		id: clock
 		precision: SystemClock.Seconds
 	}
-
 	Variants {
 		model: Quickshell.screens
 		Wallpaper {}
@@ -51,7 +43,21 @@ Scope {
 
 	WlSessionLock {
 		id: lock
+		signal unlock
 		readonly property PamContext pam: PamContext {}
 		LockScreen {}
+	}
+	Process {
+		command: ["gdbus", "monitor", "--system", "--dest", "org.freedesktop.login1"]
+		running: true
+		stdout: SplitParser {
+			splitMarker: "\n"
+			onRead: line => {
+				if (line.includes("org.freedesktop.login1.Session.Lock")){
+					lock.locked = true
+					lock.pam.start()
+				} else if (line.includes("org.freedesktop.login1.Session.Unlock")) lock.unlock()
+			}
+		}
 	}
 }
